@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "https://anchor-insurance-api.onrender.com/api/v1",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }

@@ -1,0 +1,28 @@
+
+<div class="contents relative">
+<div class="custom-tabs">
+    <div class="tab" [ngClass]="{'active': selectedTab === 'personal_details'}" (click)="selectTab('personal_details')">
+        <span *ngIf="!isMobile" class="desktop-text">Personal Information</span>
+        <span *ngIf="isMobile" class="mobile-icon"><i class="fa fa-user"></i></span>
+    </div>
+    <div class="tab" [ngClass]="{'active': selectedTab === 'education'}" (click)="selectTab('education')">
+        <span *ngIf="!isMobile" class="desktop-text">Education</span>
+        <span *ngIf="isMobile" class="mobile-icon"><i class="fa fa-book"></i></span>
+    </div>
+    <div class="tab" [ngClass]="{'active': selectedTab === 'more'}" (click)="selectTab('more')">More</div>
+    <div class="tab" [ngClass]="{'active': selectedTab === 'salary'}" (click)="selectTab('salary')">Salary</div>
+    <div class="tab" [ngClass]="{'active': selectedTab === 'bank_details'}" (click)="selectTab('bank_details')">Bank Details</div>
+    <div class="tab" [ngClass]="{'active': selectedTab === 'modules'}" (click)="selectTab('modules')">Previleges</div>
+  </div>
+  
+  <div class="tabContent">
+    <div *ngIf="selectedTab === 'personal_details'" [ngClass]="{'active-content': selectedTab === 'personal_details'}">Tab 1 content goes here.</div>
+    <div *ngIf="selectedTab === 'education'" [ngClass]="{'active-content': selectedTab === 'education'}">Tab 2 content goes here.</div>
+    <div *ngIf="selectedTab === 'more'" [ngClass]="{'active-content': selectedTab === 'more'}">Tab 3 content goes here.</div>
+    <div *ngIf="selectedTab === 'salary'" [ngClass]="{'active-content': selectedTab === 'salary'}">Tab 3 content goes here.</div>
+    <div *ngIf="selectedTab === 'bank_details'" [ngClass]="{'active-content': selectedTab === 'bank_details'}">Tab 3 content goes here.</div>
+    <div *ngIf="selectedTab === 'modules'" [ngClass]="{'active-content': selectedTab === 'modules'}">Tab 3 content goes here.</div>
+  </div>
+
+
+</div>

@@ -1,0 +1,163 @@
+@media (max-width: 767px) {
+    .sidenav {
+        position: fixed;
+        width: 15rem;
+        z-index: 3;
+        height: 100vh;
+        left: -100%;
+        display: none;
+        animation: showMenu 0.4s ease forwards;
+    }
+    
+    .body {
+        width: calc(100% - 0rem) !important;
+        /*height: 100vh;*/
+        margin-top: 5.75rem;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 1.5rem !important;
+    }
+
+    .body-md-screen {
+        width: calc(100% - 0rem) !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .head{
+        width: calc(100% - 0rem) !important;
+        margin-left: 0rem !important;
+        background-color: #495057 !important;
+       
+        .head-content{
+               
+            .head-content-left{
+                padding-left: 0px !important;
+                .search-container{
+                    position: relative;
+                    
+    
+                   
+                    .search-menu-btn{
+                        font-size: 18px;
+                        height: 34px !important;
+                        width: 34px !important;
+                        cursor: pointer;
+                        border: 1px solid transparent;
+                        border-radius: 50%;
+                        outline: 0;
+                    }
+                    .search-menu-btn:hover, 
+                    .search-menu-btn:focus{
+                        .search-icon{
+                            color: #699dfa;
+                        }
+                    }
+    
+                }
+            }
+    
+            .head-content-right{
+                display: flex;
+                align-items: center;
+    
+                .head-menu{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-left: 1.25rem;
+    
+                    .head-menu-item{
+                        .head-menu-item-btn{
+                            font-size: 18px;
+                            height: 34px !important;
+                            width: 34px !important;
+                            cursor: pointer;
+                            border: 1px solid transparent;
+                            border-radius: 50%;
+                            margin-left: 5px;
+                            outline: 0;
+                            color: #495057;
+    
+                            .flag{
+                                height: 17px;
+                                border-radius: 3px;
+                                margin-top: 2px;
+                            }
+                        }
+    
+                        .head-menu-item-btn:hover, .head-menu-item-btn:focus{
+                            /*background: #eff2f3;*/
+                            .menu-icon{
+                                color: #699dfa;
+                            }
+                        }
+                    }
+                }
+    
+                .head-user-avatar-container{
+                    margin-left: 20px;
+    
+                    .head-user-avatar{
+                        position: relative;
+    
+                        .user-avatar{
+                            margin-bottom: -4px;
+                            width: 40px !important;
+                            height: 40px !important;
+                            border-radius: 50%;
+                            box-shadow: 0 0 15px rgb(35 35 35 / 15%);
+                            cursor: pointer;
+                        }
+                       
+                    }
+    
+                    .circle-indicator{
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: -2px;
+                        right: -1px;
+                        background: #699dfa;
+    
+                        &.pulse{
+                            animation: pulse-animation 1.2s infinite;
+                        }
+     
+                    }
+    
+                   
+                }
+    
+    
+            }
+        }
+
+        .mobile-menus{
+            display: block;
+            color: #fff;
+            margin-right: 12px;
+            font-size: 25px;
+        }
+
+       
+        
+    }
+
+    .btn-close-none-mobile{
+        display: none !important;
+    }
+
+    .btn-close-mobile{
+        display: block !important;
+    }
+    
+    @keyframes showMenu {
+        to{
+         left: 0;
+        } 
+     }
+    }
+
+   

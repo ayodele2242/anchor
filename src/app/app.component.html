@@ -1,0 +1,13 @@
+
+<ng-container *ngIf="authService.isLoggedInOk">
+<app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+<app-header
+  [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth"
+ 
+></app-header>
+</ng-container>
+<app-body
+    [collapsed]="isSideNavCollapsed"
+    [screenWidth]="screenWidth"
+></app-body>

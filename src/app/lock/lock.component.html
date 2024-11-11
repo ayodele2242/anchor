@@ -1,0 +1,20 @@
+<div class="overlay" *ngIf="isOverlayVisible" >
+    <div class="formBody">
+        <span>Hello, <span class="name">{{this.info?.name}}</span></span> 
+        <form id="loginForm" class="form-signin mt-3" (ngSubmit)="loginBack()" >
+            <p class="font-weight-bold text-white">Enter your password to log back in</p>
+            <div class="form-group form-body">
+                <span class="icon"><img src="assets/img/icon/lock-icon-02.svg" alt /></span>
+            <input type="{{ showPassword ? 'text' : 'password' }}" id="password" [(ngModel)]="password" name="password" class="" placeholder="Password">
+           
+            <span class="icon viewPwd" (click)="togglePasswordVisibility()"> <i class="{{ showPassword ? 'fas fa-eye-slash text-danger' : 'fas fa-eye text-dark' }}"></i></span>
+            
+            </div>
+            <div class="form-group text-center mobile-top">
+                <button type="submit" class="btn btn-dark account-btn"> <span class="spinner-grow spinner-grow-sm bg-white" *ngIf="DisplaySpinner"></span> {{ btnText }}</button>
+            </div>
+            <div class="form-group text-center mobile-top anotherUser" (click)="anotherAccount()">Login to another account</div>
+            
+        </form>
+    </div>
+</div>

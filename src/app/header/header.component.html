@@ -1,0 +1,120 @@
+<div class="head" [ngClass]="getHeadClass()">
+    <div class="head-content">
+        <div class="head-content-left">
+            <i class="fa fa-th mobile-menus" (click)="openMenu()"></i>
+            <div class="search-container">
+
+                <div *ngIf="!canShowSearchAsOverlay" class="normal-search">
+                    <input type="search" name="" class="search" id="" placeholder="Search for a Customer">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div *ngIf="canShowSearchAsOverlay">
+                    <button 
+                    [cdkMenuTriggerFor]="searchOverlay" 
+                    class="search-menu-btn ripple"
+                    >
+                    <i class="fas fa-search search-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="head-content-right">
+            <div class="head-menu">
+                <!--<div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple" [cdkMenuTriggerFor]="languageOverlay">
+                        <img [src]="'assets/flags/' + selectedLanguage.flag +'.jpg'" alt="" class="flag">
+                    </button>
+                </div>-->
+                <!--<div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="fas fa-expand menu-icon"></i>
+                    </button>
+                </div>-->
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple" [cdkMenuTriggerFor]="notificationOverlay">
+                        <i class="fas fa-bell menu-icon"></i>
+                    </button>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="fas fa-comment-alt menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="head-user-avatar-container">
+                <div class="head-user-avatar" [cdkMenuTriggerFor]="userOverlay">
+                    <img [src]="'assets/img/user.png'" alt="" class="user-avatar">
+                    <div class="circle-indicator pulse"></div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-lock *ngIf="isOverlayVisible"></app-lock>
+
+<ng-template #searchOverlay>
+  <div class="overlay overlay-search overlay-fall" cdkMenu>
+    <input type="search" name="" class="search" id="" placeholder="Search Member">
+    <button class="search-btn">
+        <i class="fas fa-search search-icon"></i>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #languageOverlay>
+    <div class="overlay overlay-language overlay-fall" cdkMenu>
+         <ul>
+            <li *ngFor="let lang of languages" cdkMenuItem>
+                <img [src]="'assets/flags/' + lang.flag +'.jpg'" alt="">
+                <span>{{lang.language}}</span>
+            </li>
+         </ul>
+    </div>
+</ng-template>
+
+
+<ng-template #notificationOverlay>
+    <div class="overlay overlay-notification overlay-fall" cdkMenu>
+         <ul>
+            <li class="notification-head-container">
+                <div class="notification-head">Notifications</div>
+                <span class="view-all-link">
+                    <a>View All</a>
+                </span>
+            </li>
+            <li class="notification-message-container" 
+            *ngFor="let notif of notifcations" cdkMenuItem>
+                <i [class]="notif.icon"></i>
+                <div>
+                    <div class="notification-subject">
+                        {{ notif.subject }}
+                    </div>
+                    <p class="notification-desc">{{ notif.description }}</p>
+                </div>
+            </li>
+         </ul>
+    </div>
+</ng-template>
+
+<ng-template #userOverlay>
+    <div class="overlay overlay-user overlay-fall" cdkMenu>
+        <ul>
+            <li *ngFor="let item of userItems" cdkMenuItem >
+                <a [routerLink]="[item.routeLink]" *ngIf="item.routeLink != '' && item.click == ''">
+                    <i class="item" [ngClass]="item.icon"></i>
+                    <span>{{item.label}}</span>
+                </a>
+                <a (click)="logScreen()" *ngIf="item.routeLink == '' && item.short == 'lock_screen'">
+                    <i class="item" [ngClass]="item.icon"></i>
+                    <span>{{item.label}}</span>
+                </a>
+                <a (click)="logOut()" *ngIf="item.routeLink == '' && item.short == 'logout'" class="text-danger">
+                    <i class="item" [ngClass]="item.icon"></i>
+                    <span>{{item.label}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</ng-template>

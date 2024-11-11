@@ -1,0 +1,141 @@
+
+
+    <div class="contents relative">
+        
+            <div class="row">
+                <div class="col-sm-4 col-3">
+                    <h1 class="page-title">Staffs List</h1>
+                </div>
+                <div class="col-sm-8 col-9 text-end m-b-10">
+                    <div class="searchBox">
+                        <input class=""  (keyup)="applyFilter($event)" placeholder="Search Data" #input>
+                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main-body">
+
+                        
+                            
+                      
+                        <div class="table-container">
+                          <table class="table" mat-table [dataSource]="dataSource" matSort >
+
+                            <ng-container matColumnDef="avatar">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                                <td mat-cell *matCellDef="let row"> <img [src]="row.avatar" class="staffImg" /> </td>
+                            </ng-container>
+                      
+                            <ng-container matColumnDef="staff_id">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Staff #ID </th>
+                                <td mat-cell *matCellDef="let row"> {{row.staff_id}}</td>
+                            </ng-container>
+                                                 
+                            <!-- Progress Column -->
+                            <ng-container matColumnDef="name">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                              <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+                            </ng-container>
+                      
+                           
+                      
+                            <ng-container matColumnDef="email">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                              <td mat-cell *matCellDef="let row"> {{row.email}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="phone">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+                                <td mat-cell *matCellDef="let row"> {{row.phone}}</td>
+                              </ng-container>
+                      
+                            <!--<ng-container matColumnDef="dob">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> dob </th>
+                              <td mat-cell *matCellDef="let row"> {{row.dob | date}}</td>
+                            </ng-container>-->
+                      
+                            <ng-container matColumnDef="gender">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> gender </th>
+                              <td mat-cell *matCellDef="let row"> {{row.gender}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="department">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                              <td mat-cell *matCellDef="let row"> {{row.department}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="createTime">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Created </th>
+                                <td mat-cell *matCellDef="let row"> {{row.createTime}}</td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="updateTime">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Updated Date </th>
+                                <td mat-cell *matCellDef="let row"> {{row.updateTime}}</td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="status">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Status </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-slide-toggle 
+                                    #slideToggle 
+                                    (change)="toggleStatus($event, row.id)" 
+                                    [checked]="row.status === '1'" [attr.data-id]="row.id">
+                                    </mat-slide-toggle>
+                                    
+                                </td>
+                              </ng-container>
+                      
+                           
+                      
+                            <ng-container matColumnDef="action">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                              <td mat-cell *matCellDef="let row">
+                                <div class="action">
+                                    <button class="viewBtn" mat-icon-button color="info" (click)="viewEmployee(row.id)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                      <button class="editBtn" mat-icon-button color="primary" (click)="openEditForm(row)">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <button class="deleteBtn" mat-icon-button color="warn" (click)="deleteEmployee(row.id)">
+                                          <i class="fas fa-trash"></i>
+                                      </button>
+                                </div>
+                                
+                              </td>
+                            </ng-container>
+                      
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      
+                            <!-- Row shown when there is no matching data. -->
+                            <tr class="mat-row" *matNoDataRow>
+                              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                            </tr>
+                          </table>
+                      
+                          <!-- your-component.component.html -->
+                          
+                        </div>
+                        <div class="paginator-container">
+                            <mat-paginator 
+                            [pageSizeOptions]="[25, 30, 50, 100]" 
+                           
+                            aria-label="Select page of users"></mat-paginator>
+                            <div class="records text-white"> Total Staffs: <span>{{totalRecord}}</span> <span>|</span> Records Rendered Per Load: <span>{{ rendered }}</span> <span>|</span> Records Left: <span class="text-danger font-weight-bold">{{ recordsLeft }}</span></div>
+                            <button class="btn btn-sm btn-info" (click)="loadData()">Load More Data </button>
+                          </div>
+                      </div>
+
+
+                </div>
+            </div>
+
+            
+            
+    </div>
+
+

@@ -1,0 +1,68 @@
+<div class="main-wrapper account-wrapper bg-wrapper">
+    <div class="account-page">
+    <div class="account-center">
+    <div class="account-logo d-flex justify-content-center">
+    <a href="javascript:;"><img src="assets/logo/logo-2.png" alt="Logo"></a>
+    </div>
+        <div class="account-box">
+                <div class="login-header">
+                <h3>Let's Get Started</h3>
+                <p>Sign in to continue to your account</p> 
+                <div>
+                    <div *ngIf="errMsg != '' && errStatus" class="mt-3 alert alert-danger text-container">{{errMsg}}</div>
+                  </div>
+                </div>
+                    <form id="loginForm" class="form-signin" (ngSubmit)="login()"  *ngIf="(internetStatus$ | async)">
+                    <div class="form-group form-body">
+                    <span class="icon"><img src="assets/img/icon/lock-icon-01.svg" alt /></span>
+                    <input type="text" autofocus class="" placeholder="Username" id="username" [(ngModel)]="username" name="username">
+                    </div>
+                    <div class="form-group form-body">
+                        <span class="icon"><img src="assets/img/icon/lock-icon-02.svg" alt /></span>
+                    <input type="{{ showPassword ? 'text' : 'password' }}" id="password" [(ngModel)]="password" name="password" class="" placeholder="Password">
+                   
+                    <span class="icon viewPwd" (click)="togglePasswordVisibility()"> <i class="{{ showPassword ? 'fas fa-eye-slash text-danger' : 'fas fa-eye' }}"></i></span>
+                    
+                    </div>
+                    <div class="forgotpass">
+                    <div class="remember-me">
+                    <label class="custom_check me-2 mb-0 d-inline-flex remember-me"> Remember me
+                    <input type="checkbox" name="radio">
+                    <span class="checkmark"></span>
+                    </label>
+                    </div>
+                    <a (click)="forgotPwd()" ><i class="fas fa-lock mx-2"></i>Forgot your password?</a>
+                    </div>
+                    <div class="form-group text-center mobile-top">
+                    <button type="submit" class="btn btn-dark account-btn"> <span class="spinner-grow spinner-grow-sm bg-white" *ngIf="DisplaySpinner"></span> {{ btnText }}</button>
+                    </div>
+                    </form>
+                   
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- OTP Overlay -->
+    <div class="otp-overlay" *ngIf="loginStatus === 'success'">
+        <div class="otp-container">
+            <h3 class="fw-bold">Enter OTP</h3>
+            <p>Please enter the OTP sent to your email</p>
+            <div class="otp-inputs">
+                <input type="text" maxlength="1" [(ngModel)]="otp[0]" name="otp1" 
+                       (input)="moveToNext($event, 1)" (paste)="handlePaste($event)">
+                <input type="text" maxlength="1" [(ngModel)]="otp[1]" name="otp2" 
+                       (input)="moveToNext($event, 2)">
+                <input type="text" maxlength="1" [(ngModel)]="otp[2]" name="otp3" 
+                       (input)="moveToNext($event, 3)">
+                <input type="text" maxlength="1" [(ngModel)]="otp[3]" name="otp4" 
+                       (input)="moveToNext($event, 4)">
+                <input type="text" maxlength="1" [(ngModel)]="otp[4]" name="otp5" 
+                       (input)="moveToNext($event, 5)">
+                <input type="text" maxlength="1" [(ngModel)]="otp[5]" name="otp6" 
+                       (input)="moveToNext($event, 6)">
+            </div>
+            <button class="btn btn-dark submit-otp-btn" (click)="verifyOtp()">Submit OTP</button>
+        </div>
+    </div>
+    
