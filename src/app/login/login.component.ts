@@ -256,7 +256,7 @@ export class LoginComponent {
           this.otpBtnText = 'Please wait...';
 
           const enkey = await this.storage.getStorage("key");
-          const userdata ={"otp": enteredOtp, "session_data": enkey}
+          const userdata = {"otp": enteredOtp, "session_data": enkey}
     
           try {
             const data = await this.apiService.post('auth/verify', userdata);
