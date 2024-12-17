@@ -1,14 +1,27 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+<div class="sidenav" #sidenav [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+
+
     <div class="logo-container">
-        <button class="logo" (click)="toggleCollapse()">A</button>
-        <div class="logo-text" @fadeInOut *ngIf="collapsed">Angular</div>
-        <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
-            <i class="fal fa-times close-icon"></i>
+
+        <button class="logo" *ngIf="!isMobile" (click)="toggleCollapse()">AI</button>
+        <button class="logo-dir" *ngIf="isMobile" (click)="toggleCollapse()"><i class="fas fa-arrow-right"></i></button>
+
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">Anchor</div>
+
+        <button class="btn-close btn-close-none-mobile" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+            <i class="fas fa-times close-icon"></i>
+        </button>
+
+        <button class="btn-close btn-close-mobile" @rotate *ngIf="collapsed" (click)="closeMobileSidenav()">
+            <i class="fas fa-times close-icon"></i>
         </button>
     </div>
+    
     <div class="scrollwrap scrollwrap_delayed">
-        <ul class="sidenav-nav">
+        <ul class="sidenav-nav" >
             <li class="sidenav-nav-item" *ngFor="let data of navData">
+                
+
                 <a class="sidenav-nav-link" (click)="handleClick(data)"
                     *ngIf="data.items && data.items.length > 0"
                     [ngClass]="getActiveClass(data)"
@@ -18,7 +31,7 @@
                         {{data.label}}
                     </span>
                     <i *ngIf="data.items && collapsed" class="menu-collapse-icon"
-                        [ngClass]="!data.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"
+                        [ngClass]="!data.expanded ? 'fas fa-angle-right' : 'fas fa-angle-down'"
                     ></i>
                 </a>
     

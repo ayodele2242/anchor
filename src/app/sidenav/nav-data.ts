@@ -3,12 +3,27 @@ import { INavbarData } from "./helper";
 export const navbarData: INavbarData[] = [
     {
         routeLink: 'dashboard',
-        icon: 'fal fa-home',
+        icon: 'fas fa-home',
         label: 'Dashboard'
     },
     {
+        routeLink: '#',
+        icon: 'fas fa-users',
+        label: 'Administrators',
+        items: [
+            {
+                routeLink: 'admin-list',
+                label: 'Administrators List'
+            },
+            {
+                routeLink: 'coupens/create',
+                label: 'Create Coupens'
+            }
+        ]
+    },
+    {
         routeLink: 'products',
-        icon: 'fal fa-box-open',
+        icon: 'fas fa-box-open',
         label: 'Products',
         items: [
             {
@@ -43,12 +58,12 @@ export const navbarData: INavbarData[] = [
     },
     {
         routeLink: 'statistics',
-        icon: 'fal fa-chart-bar',
+        icon: 'fas fa-chart-bar',
         label: 'Statistics'
     },
     {
         routeLink: 'coupens',
-        icon: 'fal fa-tags',
+        icon: 'fas fa-tags',
         label: 'Coupens',
         items: [
             {
@@ -63,17 +78,17 @@ export const navbarData: INavbarData[] = [
     },
     {
         routeLink: 'pages',
-        icon: 'fal fa-file',
+        icon: 'fas fa-file',
         label: 'Pages'
     },
     {
         routeLink: 'media',
-        icon: 'fal fa-camera',
+        icon: 'fas fa-camera',
         label: 'Media'
     },
     {
         routeLink: 'settings',
-        icon: 'fal fa-cog',
+        icon: 'fas fa-cog',
         label: 'Settings',
         expanded: true,
         items: [

@@ -40,6 +40,8 @@ export class ApiService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
+  
+
   loadLoginStatus() {
     const storedStatus = localStorage.getItem(this.isLoggedInKey);
     this.isLoggedInOk = storedStatus ? JSON.parse(storedStatus) : false;
@@ -74,18 +76,22 @@ getHeaders() {
 
    return headers;
  }
-
- getClientHeaders() {
-
-  return this.storage.getStorage("sysToken").then((token: any) => {
-    let header = {
-      headers: new HttpHeaders({
-          "Content-Type": "application/json",
-          "Authorization": token
-      })
+ async getClientHeaders() {
+  try {
+    const token = await this.storage.getStorage("key");
+    const headers = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      }
     };
-    return header;
-  });
+    return headers;
+  } catch (error) {
+    this.handleErrors(error);
+    return {};
+  }
 }
 
 
@@ -170,14 +176,17 @@ getHeaders() {
    // GET request
    async get<T>(endpoint: string, params?: any): Promise<T | undefined> {
     try {
-      const response = await axios.get<T>(`${environment.url}/${endpoint}`, { params });
+      const headers = await this.getClientHeaders();
+      const response = await axios.get<T>(`${environment.url}/${endpoint}`, { 
+        ...headers,
+        params 
+      });
       return response.data;
     } catch (error) {
       this.handleErrors(error);
       return undefined;
     }
   }
-
   // POST request
   async post<T>(endpoint: string, data: any, headers?: any): Promise<T | undefined> {
     try {

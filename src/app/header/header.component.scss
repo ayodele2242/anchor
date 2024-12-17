@@ -1,6 +1,6 @@
 .head{
-    width: calc(100% - 3rem);
-    margin-left: 3rem;
+    width: calc(100% - 10rem);
+    margin-left: 10rem;
     z-index: 1;
     transition: all 0.5s ease;
     background: #f4f7fa;
@@ -146,8 +146,8 @@
 }
 
 .head-trimmed{
-    width: calc(100% - 15.5625rem);
-    margin-left: 15.5625rem;
+    width: calc(100% - 20.5625rem);
+    margin-left: 20.5625rem;
 }
 
 .head-md-screen{

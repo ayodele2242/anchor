@@ -51,8 +51,10 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { JobTitleComponent } from './job-title/job-title.component';
 import { SharedsignalService } from './services/sharedsignal.service';
+import { AdminListComponent } from './admin-list/admin-list.component';
 
-import { SharedCommandService } from './services/sharedcommand.service'
+import { SharedCommandService } from './services/sharedcommand.service';
+
 
 
 //import { LoadingInterceptor } from './loading.interceptor';
@@ -79,6 +81,7 @@ import { SharedCommandService } from './services/sharedcommand.service'
     EmployeeListComponent,
     DepartmentsComponent,
     JobTitleComponent,
+    AdminListComponent,
   
   ],
   imports: [

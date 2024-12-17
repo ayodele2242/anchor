@@ -15,6 +15,7 @@ import { BranchesComponent } from './branches/branches.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { JobTitleComponent } from './job-title/job-title.component';
+import { AdminListComponent } from './admin-list/admin-list.component';
 //import { RedirectDashboardGuard } from './guards/prevent-back.guard';
 
 
@@ -33,6 +34,11 @@ const routes: Routes = [
   { 
     path: 'dashboard', 
     component: DashboardComponent, 
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'admin-list', 
+    component: AdminListComponent, 
     canActivate: [AuthGuard]
   },
   {
