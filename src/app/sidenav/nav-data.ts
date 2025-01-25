@@ -14,12 +14,24 @@ export const navbarData: INavbarData[] = [
             {
                 routeLink: 'admin-list',
                 label: 'Administrators List'
-            },
-            {
-                routeLink: 'coupens/create',
-                label: 'Create Coupens'
             }
         ]
+    },
+    {
+        routeLink: '#',
+        icon: 'fas fa-users',
+        label: 'Customers',
+        items: [
+            {
+                routeLink: 'users-list',
+                label: 'Customers List'
+            }
+        ]
+    },
+    {
+        routeLink: 'brokers',
+        icon: 'fas fa-chart-bar',
+        label: 'Brokers'
     },
     {
         routeLink: 'products',
@@ -55,11 +67,6 @@ export const navbarData: INavbarData[] = [
                 label: 'Level 1.2',
             }
         ]
-    },
-    {
-        routeLink: 'statistics',
-        icon: 'fas fa-chart-bar',
-        label: 'Statistics'
     },
     {
         routeLink: 'coupens',

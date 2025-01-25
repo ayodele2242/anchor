@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, HostListener } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostListener, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './services/api.service';
 import { Observable } from 'rxjs';
@@ -11,7 +11,8 @@ interface SideNavToggle {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit{
   title = 'finance';

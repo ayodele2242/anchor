@@ -54,6 +54,14 @@ import { SharedsignalService } from './services/sharedsignal.service';
 import { AdminListComponent } from './admin-list/admin-list.component';
 
 import { SharedCommandService } from './services/sharedcommand.service';
+import { AdminDetailsModalComponent } from './admin-details-modal/admin-details-modal.component';
+import { UpdateAdminModalComponent } from './update-admin-modal/update-admin-modal.component';
+import { AddAdminModalComponent } from './add-admin-modal/add-admin-modal.component';
+import { CustomerDetailsModalComponent } from './modals/customer-details-modal/customer-details-modal.component';
+import { CustomerUpdateModalComponent } from './modals/customer-update-modal/customer-update-modal.component';
+import { BrokersComponent } from './brokers/brokers.component';
+import { AddBrokerModalComponent } from './modals/add-broker-modal/add-broker-modal.component';
+import { UpdateBrokerModalComponent } from './modals/update-broker-modal/update-broker-modal.component';
 
 
 
@@ -82,6 +90,14 @@ import { SharedCommandService } from './services/sharedcommand.service';
     DepartmentsComponent,
     JobTitleComponent,
     AdminListComponent,
+    AdminDetailsModalComponent,
+    UpdateAdminModalComponent,
+    AddAdminModalComponent,
+    CustomerDetailsModalComponent,
+    CustomerUpdateModalComponent,
+    BrokersComponent,
+    AddBrokerModalComponent,
+    UpdateBrokerModalComponent,
   
   ],
   imports: [

@@ -269,9 +269,11 @@ export class LoginComponent {
                if(this.dataResp.status === 'error'){
                 this.toastrService.showError(this.dataResp.message, 'Error', 'toast-top-right');
                }else{
+                console.log("Token ",this.dataResp?.user.auth_token);
                 await this.storage.setStorage('login', 'loggedIn');
                 this.apiService.updateLoginStatus(true);
                 await this.storage.setStorage('user', JSON.stringify(data));
+                await this.storage.setStorage('key', this.dataResp?.user.auth_token);
                 this.router.navigate(['/dashboard']);
                 
                }

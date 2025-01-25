@@ -16,6 +16,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { JobTitleComponent } from './job-title/job-title.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { BrokersComponent } from './brokers/brokers.component';
 //import { RedirectDashboardGuard } from './guards/prevent-back.guard';
 
 
@@ -41,6 +43,16 @@ const routes: Routes = [
     component: AdminListComponent, 
     canActivate: [AuthGuard]
   },
+  { 
+    path: 'users-list', 
+    component: UsersListComponent, 
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'brokers', 
+    component: BrokersComponent,
+    canActivate: [AuthGuard] 
+   },
   {
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),

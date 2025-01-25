@@ -82,9 +82,7 @@ getHeaders() {
     const headers = {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Authorization": `Bearer ${token}`
       }
     };
     return headers;
@@ -187,7 +185,9 @@ getHeaders() {
       return undefined;
     }
   }
-  // POST request
+
+  
+  // POST request 
   async post<T>(endpoint: string, data: any, headers?: any): Promise<T | undefined> {
     try {
       const config: AxiosRequestConfig = {
@@ -195,9 +195,12 @@ getHeaders() {
       };
       const response = await axios.post<T>(`${environment.url}/${endpoint}`, data, config);
       return response.data;
-    } catch (error) {
-      const errorMessage = this.handleErrors(error);
-      throw new Error(errorMessage); // Throwing error with user-friendly message
+    } catch (error: any) {
+      if (error.response && error.response.data) {
+        return error.response.data as T; // Return the error response directly
+      }
+      this.handleErrors(error); // Log or handle generic errors
+      return undefined;
     }
   }
   
@@ -205,10 +208,8 @@ getHeaders() {
   // PUT request
   async put<T>(endpoint: string, data: any, headers?: any): Promise<T | undefined> {
     try {
-      const config: AxiosRequestConfig = {
-        headers,
-      };
-      const response = await axios.put<T>(`${environment.url}/${endpoint}`, data, config);
+      const headers = await this.getClientHeaders();
+      const response = await axios.put<T>(`${environment.url}/${endpoint}`, data, headers);
       return response.data;
     } catch (error) {
       this.handleErrors(error);
@@ -216,15 +217,37 @@ getHeaders() {
     }
   }
 
+  // PATCH request
+  async patch<T>(endpoint: string, data: any): Promise<T | undefined> {
+    const headers = await this.getClientHeaders();
+    try {
+      const response = await axios.patch<T>(`${environment.url}/${endpoint}`, data, headers);
+      return response.data;
+    } catch (error: any) {
+      // Check if the error has a response object (e.g., from Axios)
+      if (error.response && error.response.data) {
+        return error.response.data as T; // Return the error response directly
+      }
+      this.handleErrors(error); // Log or handle generic errors
+      return undefined;
+    }
+  }
+  
+
+
   // DELETE request
   async delete<T>(endpoint: string, params?: any): Promise<T | undefined> {
     try {
-      const config: AxiosRequestConfig = {
-        params,
-      };
-      const response = await axios.delete<T>(`${environment.url}/${endpoint}`, config);
+      const headers = await this.getClientHeaders();
+      const response = await axios.delete<T>(`${environment.url}/${endpoint}`, { 
+        ...headers,
+        params 
+      });
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
+      if (error.response && error.response.data) {
+        return error.response.data as T;
+      }
       this.handleErrors(error);
       return undefined;
     }

@@ -1,0 +1,101 @@
+::ng-deep .table-container .mat-header-cell {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+::ng-deep .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    .staffImg {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #e9ecef;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    th.mat-header-cell {
+        background-color: #f8f9fa !important;
+        color: #333;
+        font-weight: 600;
+        text-transform: uppercase;
+        border-bottom: 2px solid #e1e5eb !important;
+        padding: 16px;
+        font-size: 14px;
+
+        &:hover {
+            background-color: #f1f3f5;
+        }
+    }
+
+    tr.mat-row {
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #f8f9fa !important;
+        }
+    }
+
+    tr.mat-row:nth-child(even) {
+        background-color: #f8f9fa !important;
+    }
+
+    td.mat-cell {
+        padding: 16px;
+        color: #495057;
+        font-size: 14px;
+        border-bottom: 1px solid #e9ecef !important;
+        vertical-align: middle;
+    }
+
+    .action {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+
+        .viewBtn,
+        .editBtn,
+        .deleteBtn {
+            transition: all 0.3s ease;
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .viewBtn {
+            color: #17a2b8; // Info color
+        }
+
+        .editBtn {
+            color: #007bff; // Primary color
+        }
+
+        .deleteBtn {
+            color: #dc3545; // Warn color
+        }
+    }
+
+    tr.mat-row.mat-no-data-row {
+        background-color: #f8d7da;
+
+        td {
+            color: #721c24;
+            text-align: center;
+            padding: 16px;
+            font-weight: 500;
+        }
+    }
+}
