@@ -188,12 +188,12 @@ getHeaders() {
 
   
   // POST request 
-  async post<T>(endpoint: string, data: any, headers?: any): Promise<T | undefined> {
+  async post<T>(endpoint: string, data: any): Promise<T | undefined> {
     try {
-      const config: AxiosRequestConfig = {
-        headers,
-      };
-      const response = await axios.post<T>(`${environment.url}/${endpoint}`, data, config);
+      const headers = await this.getClientHeaders();
+      const response = await axios.post<T>(`${environment.url}/${endpoint}`, data, { 
+        ...headers
+      });
       return response.data;
     } catch (error: any) {
       if (error.response && error.response.data) {
@@ -262,9 +262,12 @@ getHeaders() {
     return this.http.post(url, data);
   }
 
-  getStuff(uri: string): Observable<any> {
+  async getStuff(uri: string): Promise<Observable<any>> {
     let url = this.getEndPoint() + uri;
-    return this.http.get(url, this.httpOptions)
+    const headers = await this.getClientHeaders();
+    return this.http.get(url, { 
+      ...headers
+    })
       .pipe(
         catchError((err) => {
           throw err; // Throw the error to trigger the retry logic

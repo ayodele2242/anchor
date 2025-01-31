@@ -22,6 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +54,7 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { JobTitleComponent } from './job-title/job-title.component';
 import { SharedsignalService } from './services/sharedsignal.service';
 import { AdminListComponent } from './admin-list/admin-list.component';
+import { ProductsComponent } from './products/products.component';
 
 import { SharedCommandService } from './services/sharedcommand.service';
 import { AdminDetailsModalComponent } from './admin-details-modal/admin-details-modal.component';
@@ -62,6 +65,12 @@ import { CustomerUpdateModalComponent } from './modals/customer-update-modal/cus
 import { BrokersComponent } from './brokers/brokers.component';
 import { AddBrokerModalComponent } from './modals/add-broker-modal/add-broker-modal.component';
 import { UpdateBrokerModalComponent } from './modals/update-broker-modal/update-broker-modal.component';
+
+import { CustomPaginatorIntl } from './services/custom-paginator-intl';
+import { ProductVariantsComponent } from './product-variants/product-variants.component';
+import { AddProductModalComponent } from './modals/add-product-modal/add-product-modal.component';
+import { UpdateProductModalComponent } from './modals/update-product-modal/update-product-modal.component';
+import { ViewProductModalComponent } from './modals/view-product-modal/view-product-modal.component';
 
 
 
@@ -98,6 +107,11 @@ import { UpdateBrokerModalComponent } from './modals/update-broker-modal/update-
     BrokersComponent,
     AddBrokerModalComponent,
     UpdateBrokerModalComponent,
+    ProductsComponent,
+    ProductVariantsComponent,
+    AddProductModalComponent,
+    UpdateProductModalComponent,
+    ViewProductModalComponent,
   
   ],
   imports: [
@@ -105,6 +119,7 @@ import { UpdateBrokerModalComponent } from './modals/update-broker-modal/update-
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    AngularEditorModule,
     OverlayModule,
     CdkMenuModule,
     HttpClientModule,
@@ -128,17 +143,19 @@ import { UpdateBrokerModalComponent } from './modals/update-broker-modal/update-
     MatAutocompleteModule,
     MatSlideToggleModule,
     MatTabsModule,
-   
+    MatProgressBarModule,
     
   ],
   providers: [
     SharedCommandService,
     {
-      
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
-
+    },
+    {
+      provide: CustomPaginatorIntl,
+      useClass: CustomPaginatorIntl,
     },
     HttpClient,
     InternetService,

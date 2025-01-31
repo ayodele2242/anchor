@@ -18,6 +18,7 @@ import { JobTitleComponent } from './job-title/job-title.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { BrokersComponent } from './brokers/brokers.component';
+import { ProductVariantsComponent } from './product-variants/product-variants.component';
 //import { RedirectDashboardGuard } from './guards/prevent-back.guard';
 
 
@@ -55,7 +56,13 @@ const routes: Routes = [
    },
   {
     path: 'products',
-    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
+    component: ProductsComponent,
+    canActivate: [AuthGuard],
+     
+  },
+  {
+    path: 'product-variants',
+    component: ProductVariantsComponent,
     canActivate: [AuthGuard],
      
   },

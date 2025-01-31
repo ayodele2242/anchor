@@ -2,9 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { StorageService } from '../services/storage.service';
 import { ToastrService } from '../services/toastr.service';
 import { AddBrokerModalComponent } from '../modals/add-broker-modal/add-broker-modal.component';
 import { UpdateBrokerModalComponent } from '../modals/update-broker-modal/update-broker-modal.component';
@@ -49,13 +47,13 @@ interface BrokerListResponse {
 })
 export class BrokersComponent implements OnInit{
 
-  // Pagination properties
+     // Pagination properties
       currentPage: number = 0;
       recordsPerPage: number = 10; // Adjust as needed
       totalRecords: number = 0;
     
       // Data properties
-      customers: broker[] = [];
+      brokers: broker[] = [];
       dataSource!: MatTableDataSource<broker>;
       
       // Updated table configuration to include avatar
@@ -106,18 +104,18 @@ export class BrokersComponent implements OnInit{
                 .then((response) => {
                   if (response) {
                     // Update admins list - now directly from response.objects
-                    this.customers = response.objects;
+                    this.brokers = response.objects;
             
                     // Update pagination information
                     this.totalRecords = response.meta.total_count;
             
                     // Create table data source
-                    this.dataSource = new MatTableDataSource(this.customers);
+                    this.dataSource = new MatTableDataSource(this.brokers);
                     this.dataSource.paginator = this.paginator;
                     this.dataSource.sort = this.sort;
             
                     // Handle empty results
-                    if (this.customers.length === 0) {
+                    if (this.brokers.length === 0) {
                       this.toastrService.showInfo('No brokers found', 'Information', 'top');
                     }
                   }

@@ -1,0 +1,63 @@
+// product-page.component.scss
+
+::ng-deep .mat-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  ::ng-deep .mat-header-row {
+    background-color: #1976d2;
+    color: white;
+    font-weight: bold;
+  }
+  
+  ::ng-deep .mat-header-cell {
+    padding: 16px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  
+  ::ng-deep .mat-row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  ::ng-deep .mat-row:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  
+  ::ng-deep .mat-cell {
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  ::ng-deep .mat-row:hover {
+    background-color: #e3f2fd;
+  }
+  
+  ::ng-deep .mat-button {
+    margin: 0 8px;
+    padding: 4px 12px;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  ::ng-deep .mat-button:hover {
+    background-color: #1976d2;
+    color: white;
+  }
+  
+  ::ng-deep .mat-sort-header-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  ::ng-deep .mat-sort-header-arrow {
+    margin-left: 4px;
+    color: white;
+  }
+  

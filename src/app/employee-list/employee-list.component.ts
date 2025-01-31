@@ -87,10 +87,10 @@ export class EmployeeListComponent implements OnInit {
     }
   }
   
-  loadData(): void {
+  async loadData(): Promise<void> {
     
     const url = `/staffs/staffs_list?page=${this.currentPage}&perPage=${this.recordsPerPage}`;
-    this.apiService.getStuff(url).subscribe((response: any) => {
+    (await this.apiService.getStuff(url)).subscribe((response: any) => {
       if (response.status === true) {
         // Handle pagination based on the data length
         if (response.data.length > 0) {
@@ -119,10 +119,10 @@ export class EmployeeListComponent implements OnInit {
     });
   }
   
-  searchData(): void {
+  async searchData(): Promise<void> {
     this.currentPage = 1; // Reset the page number when a new search is performed
     const url = `/staffs/staffs_list?page=${this.currentPage}&perPage=${this.recordsPerPage}&search=${this.searchQuery}`;
-    this.apiService.getStuff(url).subscribe((response: any) => {
+    (await this.apiService.getStuff(url)).subscribe((response: any) => {
       if (response.status === true) {
         // Handle the response as before
         if (response.data.length > 0) {
